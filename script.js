@@ -1,7 +1,11 @@
+<script>
 function buscar(tipo) {
   const termo = document.getElementById("busca").value;
 
-  if (!termo) return;
+  if (!termo) {
+    alert("Digite o nome da música 😊");
+    return;
+  }
 
   let complemento = "";
 
@@ -13,13 +17,8 @@ function buscar(tipo) {
 
   const buscaFinal = encodeURIComponent(termo + complemento);
 
-  const url = `https://www.youtube.com/embed?listType=search&list=${buscaFinal}`;
+  const url = `https://www.youtube.com/results?search_query=${buscaFinal}`;
 
-  document.getElementById("iframe").src = url;
-  document.getElementById("player").style.display = "block";
+  window.open(url, "_blank");
 }
-
-function fechar() {
-  document.getElementById("iframe").src = "";
-  document.getElementById("player").style.display = "none";
-}
+</script>
