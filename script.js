@@ -1,23 +1,34 @@
-<script>
 function buscar(tipo) {
-  const termo = document.getElementById("busca").value.trim();
+  let termo = document.getElementById("busca").value;
 
-  if (!termo) {
-    alert("Digite o nome da música 😊");
+  if (!termo.trim()) {
+    alert("Digite o nome da música 🎵");
     return;
   }
 
-  let canal = "";
+  // Normaliza espaços
+  termo = termo.trim().replace(/\s+/g, " ");
+
+  // Converte para padrão de URL
+  const termoFormatado = encodeURIComponent(termo);
+
+  let url = "";
 
   if (tipo === "nacional") {
-    canal = "singer karaoke";
+    url = "https://www.youtube.com/@singerkaraoke/search?query=" + termoFormatado;
   } else {
-    canal = "sing king karaoke";
+    url = "https://www.youtube.com/@singkingkaraoke/search?query=" + termoFormatado;
   }
 
-  const url = "https://www.youtube.com/results?search_query=" +
-              encodeURIComponent(termo + " " + canal);
+  // Popup centralizado
+  const largura = 900;
+  const altura = 600;
+  const esquerda = (screen.width - largura) / 2;
+  const topo = (screen.height - altura) / 2;
 
-  window.open(url, "_blank");
+  window.open(
+    url,
+    "karaokePlayer",
+    `width=${largura},height=${altura},left=${esquerda},top=${topo},resizable=yes,scrollbars=yes`
+  );
 }
-</script>
