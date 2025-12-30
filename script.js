@@ -1,23 +1,22 @@
 <script>
 function buscar(tipo) {
-  const termo = document.getElementById("busca").value;
+  const termo = document.getElementById("busca").value.trim();
 
   if (!termo) {
     alert("Digite o nome da música 😊");
     return;
   }
 
-  let complemento = "";
+  let canal = "";
 
   if (tipo === "nacional") {
-    complemento = " singer karaoke";
+    canal = "singer karaoke";
   } else {
-    complemento = " sing king karaoke";
+    canal = "sing king karaoke";
   }
 
-  const buscaFinal = encodeURIComponent(termo + complemento);
-
-  const url = `https://www.youtube.com/results?search_query=${buscaFinal}`;
+  const url = "https://www.youtube.com/results?search_query=" +
+              encodeURIComponent(termo + " " + canal);
 
   window.open(url, "_blank");
 }
