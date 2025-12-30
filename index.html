@@ -3,33 +3,31 @@
 <head>
   <meta charset="UTF-8">
   <title>DARIOKÊ</title>
-
   <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
-<div class="card">
-  <span class="data">17.01</span>
-
+<div class="container">
   <h1>DARI<span>O</span>KÊ</h1>
-  <span class="jp">ダリオケ</span>
+  <p class="sub">Escolha a música e solte a voz 🎤</p>
 
-  <p class="sub">SAVE THE DATE</p>
+  <input 
+    type="text" 
+    id="busca" 
+    placeholder="Digite o nome da música"
+  >
 
-  <input type="text" id="searchInput" placeholder="Digite a música">
-
-  <button onclick="buscarMusica()">🎤 Buscar</button>
-
-  <div id="resultados"></div>
-
-  <h3>Fila</h3>
-  <ul id="fila"></ul>
+  <div class="botoes">
+    <button onclick="buscar('nacional')">🎶 Nacional</button>
+    <button onclick="buscar('internacional')">🌍 Internacional</button>
+  </div>
 </div>
 
+<!-- PLAYER -->
 <div id="player">
-  <iframe id="videoFrame"></iframe>
+  <button class="fechar" onclick="fechar()">✖</button>
+  <iframe id="iframe"></iframe>
 </div>
 
 <script src="script.js"></script>
