@@ -3,33 +3,98 @@
 <head>
   <meta charset="UTF-8">
   <title>DARIOKÊ</title>
-  <link rel="stylesheet" href="style.css">
+
+  <style>
+    body {
+      margin: 0;
+      background: #76c9f0;
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+
+    .container {
+      margin-top: 80px;
+    }
+
+    h1 {
+      font-size: 64px;
+      color: #2f4fa1;
+      margin-bottom: 10px;
+    }
+
+    .sub {
+      color: #f05a9e;
+      margin-bottom: 25px;
+      font-size: 18px;
+    }
+
+    input {
+      padding: 12px;
+      width: 280px;
+      font-size: 16px;
+      border: none;
+      border-radius: 4px;
+      outline: none;
+    }
+
+    .botoes {
+      margin-top: 20px;
+    }
+
+    button {
+      padding: 12px 22px;
+      margin: 5px;
+      background: #2f4fa1;
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-size: 15px;
+      border-radius: 4px;
+    }
+
+    button:hover {
+      opacity: 0.9;
+    }
+  </style>
 </head>
 
 <body>
 
-<div class="container">
-  <h1>DARI<span>O</span>KÊ</h1>
-  <p class="sub">Escolha a música e solte a voz 🎤</p>
+  <div class="container">
+    <h1>DARI<span style="color:#2f4fa1;">O</span>KÊ</h1>
+    <p class="sub">Escolha a música e solte a voz 🎤</p>
 
-  <input 
-    type="text" 
-    id="busca" 
-    placeholder="Digite o nome da música"
-  >
+    <input 
+      id="busca" 
+      type="text" 
+      placeholder="Digite o nome da música ou artista"
+    >
 
-  <div class="botoes">
-    <button onclick="buscar('nacional')">🎶 Nacional</button>
-    <button onclick="buscar('internacional')">🌍 Internacional</button>
+    <div class="botoes">
+      <button onclick="buscar('nacional')">🎶 Nacional</button>
+      <button onclick="buscar('internacional')">🌍 Internacional</button>
+    </div>
   </div>
-</div>
 
-<!-- PLAYER -->
-<div id="player">
-  <button class="fechar" onclick="fechar()">✖</button>
-  <iframe id="iframe"></iframe>
-</div>
+  <script>
+    function buscar(tipo) {
+      let termo = document.getElementById("busca").value;
 
-<script src="script.js"></script>
-</body>
-</html>
+      if (!termo.trim()) {
+        alert("Digite o nome da música ou artista 🎵");
+        return;
+      }
+
+      // Remove espaços extras
+      termo = termo.trim().replace(/\s+/g, " ");
+
+      // Converte para formato aceito pelo YouTube
+      const termoFormatado = encodeURIComponent(termo);
+
+      let url = "";
+
+      if (tipo === "nacional") {
+        url = "https://www.youtube.com/@singerkaraoke/search?query=" + termoFormatado;
+      } else {
+        url = "https://www.youtube.com/@singkingkaraoke/search?query=" + termoFormatado;
+      }
