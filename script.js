@@ -1,36 +1,25 @@
-const API_KEY = "COLOQUE_SUA_CHAVE_DO_YOUTUBE_AQUI";
+function buscar(tipo) {
+  const termo = document.getElementById("busca").value;
 
-const CANAIS = [
-  "UCxxxxxxxx", 
-  "UCyyyyyyyy"
-];
+  if (!termo) return;
 
-async function buscarMusica() {
-  const termo = document.getElementById("searchInput").value;
-  const resultados = document.getElementById("resultados");
-  resultados.innerHTML = "Buscando...";
+  let complemento = "";
 
-  let videos = [];
-
-  for (let canal of CANAIS) {
-    const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${termo}&channelId=${canal}&type=video&maxResults=5&key=${API_KEY}`;
-    const res = await fetch(url);
-    const data = await res.json();
-    videos = videos.concat(data.items);
+  if (tipo === "nacional") {
+    complemento = " singer karaoke";
+  } else {
+    complemento = " sing king karaoke";
   }
 
-  resultados.innerHTML = "";
+  const buscaFinal = encodeURIComponent(termo + complemento);
 
-  videos.forEach(video => {
-    const div = document.createElement("div");
-    div.textContent = video.snippet.title;
-    div.onclick = () => tocar(video.id.videoId);
-    resultados.appendChild(div);
-  });
+  const url = `https://www.youtube.com/embed?listType=search&list=${buscaFinal}`;
+
+  document.getElementById("iframe").src = url;
+  document.getElementById("player").style.display = "block";
 }
 
-function tocar(id) {
-  document.getElementById("player").style.display = "block";
-  document.getElementById("videoFrame").src =
-    `https://www.youtube.com/embed/${id}?autoplay=1`;
+function fechar() {
+  document.getElementById("iframe").src = "";
+  document.getElementById("player").style.display = "none";
 }
