@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>DARIOKÊ</title>
+
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="card">
+  <span class="data">17.01</span>
+
+  <h1>DARI<span>O</span>KÊ</h1>
+  <span class="jp">ダリオケ</span>
+
+  <p class="sub">SAVE THE DATE</p>
+
+  <input type="text" id="searchInput" placeholder="Digite a música">
+
+  <button onclick="buscarMusica()">🎤 Buscar</button>
+
+  <div id="resultados"></div>
+
+  <h3>Fila</h3>
+  <ul id="fila"></ul>
+</div>
+
+<div id="player">
+  <iframe id="videoFrame"></iframe>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
