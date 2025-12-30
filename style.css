@@ -1,48 +1,43 @@
-:root {
-  --azul-fundo: #76C9F0;
-  --azul-escuro: #2F4FA1;
-  --rosa: #F05A9E;
-}
-
 body {
   margin: 0;
-  background: var(--azul-fundo);
-  font-family: 'Poppins', sans-serif;
-}
-
-.card {
-  border: 6px solid var(--azul-escuro);
-  padding: 40px;
-  max-width: 500px;
-  margin: 40px auto;
+  background: #76c9f0;
+  font-family: Arial, sans-serif;
   text-align: center;
 }
 
-h1 {
-  font-family: 'Playfair Display', serif;
-  font-size: 60px;
-  color: var(--azul-escuro);
+.container {
+  margin-top: 80px;
 }
 
-.jp {
-  color: var(--rosa);
+h1 {
+  font-size: 64px;
+  color: #2f4fa1;
+}
+
+h1 span {
+  color: #2f4fa1;
 }
 
 .sub {
-  color: var(--rosa);
-  letter-spacing: 2px;
+  color: #f05a9e;
+  margin-bottom: 20px;
 }
 
 input {
   padding: 12px;
-  width: 80%;
-  margin: 10px 0;
+  width: 260px;
+  font-size: 16px;
+}
+
+.botoes {
+  margin-top: 15px;
 }
 
 button {
-  background: var(--azul-escuro);
-  color: white;
   padding: 12px 20px;
+  margin: 5px;
+  background: #2f4fa1;
+  color: white;
   border: none;
   cursor: pointer;
 }
@@ -57,5 +52,14 @@ button {
 #player iframe {
   width: 100%;
   height: 100%;
+}
+
+.fechar {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: red;
+  color: white;
   border: none;
+  padding: 10px;
 }
